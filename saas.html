@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Futura | Modern Productivity Platform for Teams</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare/ul/gogleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -23,6 +23,11 @@
             --shadow-hover: 0 15px 40px rgba(0,0,0,0.15);
             --radius: 16px;
             --radius-sm: 8px;
+            /* New dashboard colors */
+            --dashboard-bg: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            --card-bg: rgba(255, 255, 255, 0.15);
+            --progress-bg: rgba(255, 255, 255, 0.2);
+            --progress-fill: #60a5fa;
         }
 
         * {
@@ -208,16 +213,24 @@
         }
 
         .integration-logo {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             background: var(--light-gray);
             border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 10px;
-            font-size: 1.2rem;
+            font-size: 2rem;
             color: var(--primary);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .integration-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            background: white;
         }
 
         .blog-card {
@@ -338,12 +351,95 @@
             overflow: hidden;
             box-shadow: var(--shadow-hover);
             margin-top: -100px;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
         }
 
-        .hero-image img {
+        /* Custom hero image styling */
+        .hero-dashboard {
+            position: relative;
             width: 100%;
-            height: auto;
-            display: block;
+            height: 500px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            background: var(--dashboard-bg);
+        }
+        
+        .dashboard-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            color: white;
+            border-radius: 0 0 var(--radius) var(--radius);
+        }
+        
+        .dashboard-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .dashboard-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+        
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background: var(--card-bg);
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        .dashboard-progress {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--progress-bg);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            width: 75%;
+            background: var(--progress-fill);
+            border-radius: 4px;
+        }
+        
+        .progress-text {
+            font-size: 0.9rem;
+            min-width: 80px;
         }
 
         /* Features Section */
@@ -528,6 +624,11 @@
             
             .hero-image {
                 margin-top: 50px;
+                max-width: 100%;
+            }
+            
+            .dashboard-stats {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -562,6 +663,10 @@
                 color: var(--dark);
                 cursor: pointer;
             }
+            
+            .dashboard-stats {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 576px) {
@@ -579,6 +684,16 @@
             
             .hero {
                 padding: 120px 0 60px;
+            }
+            
+            .integration-logo {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .hero-dashboard {
+                height: 400px;
             }
         }
     </style>
@@ -615,8 +730,31 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <div style="background: linear-gradient(135deg, #4361ee, #7209b7); height: 500px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
-                        <i class="fas fa-bolt"></i>
+                    <div class="hero-dashboard">
+                        <div class="dashboard-overlay">
+                            <div class="dashboard-title">Team Dashboard</div>
+                            <div class="dashboard-subtitle">This is how your business could operate</div>
+                            <div class="dashboard-stats">
+                                <div class="stat-card">
+                                    <div class="stat-value">92%</div>
+                                    <div class="stat-label">Tasks Completed</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value">14</div>
+                                    <div class="stat-label">Active Projects</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value">28</div>
+                                    <div class="stat-label">Team Members</div>
+                                </div>
+                            </div>
+                            <div class="dashboard-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <div class="progress-text">Q3 Goals: 75%</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -762,15 +900,13 @@
     <section class="section" id="integrations" style="background: #f8f9ff;">
         <div class="container">
             <h2>Works With Your Favorite Tools</h2>
-            <div class="d-flex justify-between" style="flex-wrap: wrap;">
+            <div class="d-flex justify-between" style="flex-wrap: wrap; justify-content: center;">
                 <div class="integration-logo"><i class="fab fa-slack"></i></div>
                 <div class="integration-logo"><i class="fab fa-microsoft"></i></div>
                 <div class="integration-logo"><i class="fab fa-google"></i></div>
                 <div class="integration-logo"><i class="fab fa-dropbox"></i></div>
                 <div class="integration-logo"><i class="fab fa-github"></i></div>
                 <div class="integration-logo"><i class="fab fa-trello"></i></div>
-                <div class="integration-logo"><i class="fab fa-asana"></i></div>
-                <div class="integration-logo"><i class="fab fa-zoom"></i></div>
             </div>
         </div>
     </section>
@@ -826,3 +962,97 @@
             <h2>Latest From Our Blog</h2>
             <div class="blog-grid">
                 <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>5 Ways to Boost Remote Team Productivity</h3>
+                        <p>Discover proven strategies to keep your distributed team engaged and efficient.</p>
+                        <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.9rem;">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Analytics That Actually Help Your Team</h3>
+                        <p>Move beyond vanity metrics to actionable insights that drive real results.</p>
+                        <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.9rem;">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Security Best Practices for SaaS Platforms</h3>
+                        <p>Learn how to protect your team's data without sacrificing usability.</p>
+                        <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.9rem;">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Transform Your Workflow?</h2>
+            <p>Join thousands of teams who use Futura to get more done, faster.</p>
+            <a href="#signup" class="btn">Start Your Free Trial</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Futura</h3>
+                    <p>The modern productivity platform designed for today's collaborative teams.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Integrations</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Changelog</a></li>
+                        <li><a href="#">Roadmap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Webinars</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Legal</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Futura. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
