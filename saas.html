@@ -9,10 +9,10 @@
     <meta name="description" content="Futura is the all-in-one team workspace where better, faster work happens. Integrate task management, real-time analytics, and collaborative documents.">
     <meta name="author" content="Futura Platform">
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Inter & Outfit (SaaS Premium style) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,10 +22,10 @@
             /* SaaS Indigo & Violet Premium Palette */
             --primary: #6366f1; /* Modern Indigo */
             --primary-light: #818cf8;
-            --primary-glow: rgba(99, 102, 241, 0.1);
+            --primary-glow: rgba(99, 102, 241, 0.05);
             --secondary: #a855f7; /* Royal Purple */
             --secondary-light: #c084fc;
-            --secondary-glow: rgba(168, 85, 247, 0.1);
+            --secondary-glow: rgba(168, 85, 247, 0.05);
             
             --dark: #0f172a; /* Deep Slate Black */
             --darker: #020617; /* Darker Slate */
@@ -35,8 +35,8 @@
             --white: #ffffff;
             
             /* UI Elements */
-            --shadow: 0 10px 30px rgba(99, 102, 241, 0.04);
-            --shadow-hover: 0 20px 40px rgba(99, 102, 241, 0.1);
+            --shadow: 0 8px 30px rgba(99, 102, 241, 0.04), 0 1px 8px rgba(99, 102, 241, 0.04);
+            --shadow-hover: 0 16px 40px rgba(99, 102, 241, 0.08), 0 2px 12px rgba(99, 102, 241, 0.06);
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             --radius-lg: 20px;
             --radius-md: 12px;
@@ -62,6 +62,7 @@
         }
 
         h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
             font-weight: 800;
             line-height: 1.25;
             letter-spacing: -0.5px;
